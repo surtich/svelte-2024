@@ -30,4 +30,14 @@ describe('Player', () => {
 			screen.queryByText('(junior)')
 		).toBeVisible();
 	});
+
+	it('displays the name of another person', () => {
+		render(Player, {
+			...examplePlayer,
+			name: 'Athena'
+		});
+		expect(
+			screen.queryByText('Athena')
+		).toBeVisible();
+	});
 });
