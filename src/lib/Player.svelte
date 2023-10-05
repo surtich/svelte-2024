@@ -3,4 +3,4 @@
 	export let experience;
 </script>
 
-<div><span>{name}</span> ({experience})</div>
+<div><span>{name}</span> ({experience}) <slot /></div>

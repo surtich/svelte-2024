@@ -40,4 +40,24 @@ describe('Player', () => {
 			screen.queryByText('Athena')
 		).toBeVisible();
 	});
+
+	/* Currently, @testing-library/svelte does not support using slots. */
+	it.skip('Check that the slot has been rendered.', async () => {
+		const { getByText } = render(Player, {
+			props: {
+				name: 'John',
+				experience: 42
+			},
+			slots: {
+				default: '¡Hola, mundo!'
+			}
+		});
+
+		const playerElement = document.body.firstChild;
+		const slotElement = getByText('¡Hola, mundo!');
+
+		expect(playerElement).toContainElement(
+			slotElement
+		);
+	});
 });
