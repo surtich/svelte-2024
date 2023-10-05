@@ -1,1 +1,5 @@
-<h1>Hello Svelte!</h1>
+<script>
+	export let name;
+</script>
+
+<p>Hello, {name}!</p>
