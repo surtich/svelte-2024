@@ -1,13 +1,10 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-	export let title = 'Play game';
+	export let name = 'game';
 	export let color = 'red';
 
-	const dispatch = createEventDispatcher();
+	$: title = `Play ${name}`;
 </script>
 
-<button
-	style="color:{color};"
-	on:click={() => dispatch('addPoints')}
+<button style="color:{color};" on:click
 	>{title}</button
 >

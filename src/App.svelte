@@ -26,17 +26,10 @@
 	}
 </script>
 
-{#each players as player}
-	<Player
-		name={player.name}
-		experience={player.experience}
-	>
-		{#each player.games as game}
-			<Game
-				name={game.name}
-				inc={game.inc}
-				on:levelUp={onLevelUp(player.name)}
-			/>
+{#each players as { name, experience, games }}
+	<Player {name} {experience}>
+		{#each games as game}
+			<Game {...game} on:levelUp={onLevelUp(name)} />
 		{/each}
 	</Player>
 	<br />

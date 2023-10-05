@@ -1,9 +1,7 @@
 <script>
 	import Button from './Button.svelte';
 	import { createEventDispatcher } from 'svelte';
-	export let name = 'game';
 	export let inc = 1;
-	export let color = 'black';
 	let points = 0;
 
 	const dispatch = createEventDispatcher();
@@ -22,11 +20,7 @@
 
 <div>
 	{points}
-	<Button
-		on:addPoints={addPoints}
-		title="Play {name}"
-		{color}
-	/>
+	<Button on:click={addPoints} {...$$restProps} />
 </div>
 
 <style>
