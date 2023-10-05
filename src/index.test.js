@@ -10,11 +10,15 @@ describe('sum test', () => {
 	// This test verifies that the name prop in the component is being used.
 	it('renders hello, svelte', () => {
 		render(App, { name: 'Svelte' });
-		expect(document.body).toHaveTextContent('Hello, Svelte!');
+		expect(document.body).toHaveTextContent(
+			'Hello, Svelte!'
+		);
 	});
 
 	it('skips the rendering of hello, svelte', () => {
 		// render(Hello, { name: 'Svelte' });
-		expect(document.body).not.toHaveTextContent('Svelte!');
+		expect(document.body).not.toHaveTextContent(
+			'Svelte!'
+		);
 	});
 });
