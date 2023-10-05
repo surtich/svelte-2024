@@ -16,4 +16,16 @@ describe('sum test', () => {
 		render(App, { name: 'world' });
 		expect(document.body).toHaveTextContent('Hello, world!');
 	});
+
+	// This test verifies that the name prop in the component is being used.
+	it('renders hello, svelte', () => {
+		render(App, { name: 'Svelte' });
+		expect(document.body).toHaveTextContent('Hello, Svelte!');
+	});
+
+	// Tests share the same document object, which is clearly not good for test independence.
+	it('renders hello, svelte', () => {
+		// render(Hello, { name: 'Svelte' });
+		expect(document.body).toHaveTextContent('Hello, Svelte!');
+	});
 });
