@@ -1,7 +1,6 @@
 <script>
+	import Game from './lib/Game.svelte';
 	import Player from './lib/Player.svelte';
 </script>
 
-<Player name="Hercules" experience="junior">
-	<div>It is a child element</div>
-</Player>
+<Game name="My Game" inc={2} onLevelUp={() => {}} />
