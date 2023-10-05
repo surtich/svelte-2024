@@ -14,8 +14,6 @@ describe('Game', () => {
 	const players = samples.players;
 	const levels = samples.levels || [];
 
-	vi.mock('./lib/Game.svelte');
-
 	it.todo(
 		'App renders the players and games',
 		async () => {
@@ -33,6 +31,8 @@ describe('Game', () => {
 	);
 
 	it("increases the player's experience when the onLevelUp function is called", async () => {
+		vi.mock('./lib/Game.svelte');
+
 		render(App, {
 			levels,
 			games,

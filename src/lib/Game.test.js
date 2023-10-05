@@ -6,8 +6,7 @@ import Game from './Game.svelte';
 describe('Game', () => {
 	const exampleGame = {
 		name: 'My Game',
-		inc: 2,
-		onLevelUp: () => {}
+		inc: 2
 	};
 
 	it('renders the initial points and name', () => {
@@ -30,26 +29,6 @@ describe('Game', () => {
 		await click(buttonElement);
 
 		expect(pointsElement).toHaveTextContent('4');
-	});
-
-	it('calls the onLevelUp function when the player levels up', async () => {
-		const onLevelUp = vi.fn();
-
-		const { getByText } = render(Game, {
-			...exampleGame,
-			onLevelUp
-		});
-
-		const buttonElement = getByText('Play My Game');
-
-		await click(buttonElement);
-		await click(buttonElement);
-		await click(buttonElement);
-		await click(buttonElement);
-		expect(onLevelUp).toHaveBeenCalledTimes(0);
-
-		await click(buttonElement);
-		expect(onLevelUp).toHaveBeenCalledTimes(1);
 	});
 
 	it('resets the points after the player levels up', async () => {

@@ -35,7 +35,7 @@
 			<Game
 				name={game.name}
 				inc={game.inc}
-				onLevelUp={onLevelUp(player.name)}
+				on:levelUp={onLevelUp(player.name)}
 			/>
 		{/each}
 	</Player>
