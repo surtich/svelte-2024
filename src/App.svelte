@@ -1,5 +1,5 @@
 <script>
-	export let name;
+	import Player from './lib/Player.svelte';
 </script>
 
-<p>Hello, {name}!</p>
+<Player name="Hercules" experience="junior" />
