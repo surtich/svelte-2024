@@ -10,7 +10,7 @@ describe('Game', () => {
 		onLevelUp: () => {}
 	};
 
-	it('Game renders the initial points and name', () => {
+	it('renders the initial points and name', () => {
 		const { getByText } = render(Game, exampleGame);
 
 		const pointsElement = getByText('0');
@@ -20,7 +20,7 @@ describe('Game', () => {
 		expect(buttonElement).toBeInTheDocument();
 	});
 
-	it('Game increments the points when the button is clicked', async () => {
+	it('increments the points when the button is clicked', async () => {
 		const { getByText } = render(Game, exampleGame);
 
 		const pointsElement = getByText('0');
@@ -32,7 +32,7 @@ describe('Game', () => {
 		expect(pointsElement).toHaveTextContent('4');
 	});
 
-	it('Game calls the onLevelUp function when the player levels up', async () => {
+	it('calls the onLevelUp function when the player levels up', async () => {
 		const onLevelUp = vi.fn();
 
 		const { getByText } = render(Game, {
@@ -52,7 +52,7 @@ describe('Game', () => {
 		expect(onLevelUp).toHaveBeenCalledTimes(1);
 	});
 
-	it('Game resets the points after the player levels up', async () => {
+	it('resets the points after the player levels up', async () => {
 		const onLevelUp = vi.fn();
 
 		const { getByText } = render(Game, exampleGame);

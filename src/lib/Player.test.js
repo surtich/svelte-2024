@@ -21,7 +21,7 @@ describe('Player', () => {
 		).toBeVisible();
 	});
 
-	it("Show the player's experience in parentheses.", () => {
+	it("shows the player's experience in parentheses.", () => {
 		render(Player, {
 			...examplePlayer,
 			experience: 'junior'
@@ -42,7 +42,7 @@ describe('Player', () => {
 	});
 
 	/* Currently, @testing-library/svelte does not support using slots. */
-	it.skip('Check that the slot has been rendered.', async () => {
+	it.skip('checks that the slot has been rendered.', async () => {
 		const { getByText } = render(Player, {
 			props: {
 				name: 'John',
