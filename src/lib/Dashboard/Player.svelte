@@ -3,4 +3,6 @@
 	export let experience;
 </script>
 
-<div><span>{name}</span> ({experience}) <slot /></div>
+<div aria-label="player {name}">
+	<span>{name}</span> ({experience}) <slot />
+</div>
