@@ -10,7 +10,7 @@
 	let selectedGames = [];
 	let hasChanges = false;
 
-	function selectPlayer(selectedPlayer) {
+	function onSelectPlayer(selectedPlayer) {
 		selectedGames = getGames(selectedPlayer);
 	}
 
@@ -45,7 +45,7 @@
 	values={players.map((p) => p.name)}
 	bind:selectedValue={selectedPlayer}
 	disabled={hasChanges}
-	onClick={selectPlayer}
+	onClick={onSelectPlayer}
 ></Select>
 
 <div class="container clear-fix">

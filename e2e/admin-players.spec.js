@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
 	await page.goto('/');
 	await page.getByLabel('menu Admin').click();
 	await page
-		.getByLabel('players', { exact: true })
+		.getByLabel('players', { exact: false })
 		.getByRole('option')
 		.first()
 		.click();

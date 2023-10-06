@@ -21,12 +21,7 @@
 {#if activeAdminMenu === 'Levels'}
 	<AdminLevels {levels} />
 {:else if activeAdminMenu === 'Games'}
-	<AdminGames {games} />
+	<AdminGames />
 {:else if activeAdminMenu === 'Players'}
-	<AdminPlayers
-		{levels}
-		{games}
-		{players}
-		{updatePlayer}
-	/>
+	<AdminPlayers {games} {players} {updatePlayer} />
 {/if}
