@@ -1,4 +1,6 @@
 <script>
+	import Select from '$lib/utils/Select.svelte';
+
 	export let games = {};
 	export let players = [];
 	export let updatePlayer = () => {};
@@ -8,11 +10,7 @@
 	let selectedGames = [];
 	let hasChanges = false;
 
-	function selectPlayer(playerName) {
-		selectedPlayer =
-			playerName === selectedPlayer
-				? undefined
-				: playerName;
+	function selectPlayer(selectedPlayer) {
 		selectedGames = getGames(selectedPlayer);
 	}
 
@@ -41,26 +39,15 @@
 	}
 </script>
 
-<label>
-	<span>Players</span><br />
-
-	<select
-		aria-label="players"
-		size={Math.max(10, gameNames.length + 2)}
-		value={selectedPlayer}
-		on:click={() => selectPlayer()}
-		disabled={hasChanges}
-	>
-		{#each players as player (player.name)}
-			<option
-				disabled={hasChanges}
-				on:click|stopPropagation={() =>
-					selectPlayer(player.name)}
-				value={player.name}>{player.name}</option
-			>
-		{/each}
-	</select>
-</label>
+<Select
+	aria-label="players"
+	label="Players"
+	disabled={hasChanges}
+	size={Math.max(10, gameNames.length + 2)}
+	values={players.map((p) => p.name)}
+	bind:selectedValue={selectedPlayer}
+	onClick={selectPlayer}
+></Select>
 
 <div class="container clear-fix">
 	<div class="games">
@@ -102,18 +89,7 @@
 		display: table;
 		clear: both;
 	}
-	label {
-		display: inline-block;
-		float: left;
-		margin-right: 20px;
-	}
-	label:not(:last-of-type) {
-	}
-	select {
-		width: 120px;
-		overflow: hidden;
-		outline: none;
-	}
+
 	.games {
 		float: left;
 	}
