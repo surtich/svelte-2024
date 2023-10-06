@@ -40,12 +40,11 @@
 </script>
 
 <Select
-	aria-label="players"
 	label="Players"
-	disabled={hasChanges}
 	size={Math.max(10, gameNames.length + 2)}
 	values={players.map((p) => p.name)}
 	bind:selectedValue={selectedPlayer}
+	disabled={hasChanges}
 	onClick={selectPlayer}
 ></Select>
 

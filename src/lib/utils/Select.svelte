@@ -1,5 +1,6 @@
 <script>
 	export let label = '';
+	export let size = 10;
 	export let values = [];
 	export let selectedValue = '';
 	export let disabled = false;
@@ -16,10 +17,12 @@
 	<span>{label}</span><br />
 
 	<select
-		on:click={() => selectValue()}
-		{disabled}
-		{...$$restProps}
+		aria-label={label}
+		{size}
 		value={selectedValue}
+		{disabled}
+		on:click={() => selectValue()}
+		{...$$restProps}
 	>
 		{#each values as value (value)}
 			<option

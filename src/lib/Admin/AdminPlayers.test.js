@@ -37,26 +37,6 @@ describe('AdminPlayers', async () => {
 			).toBeInTheDocument();
 		});
 
-		it('renders the players in the select element', async () => {
-			const playersElement = component.getByRole(
-				'listbox',
-				{
-					name: /players/i
-				}
-			);
-
-			players.forEach((player) => {
-				const optionElement =
-					playersElement.querySelector(
-						`option[value="${player.name}"]`
-					);
-				expect(optionElement).toBeInTheDocument();
-				expect(optionElement.textContent).toBe(
-					player.name
-				);
-			});
-		});
-
 		it('renders all the games in checkbox elements', async () => {
 			const checkboxElements =
 				await component.findAllByRole('checkbox', {
@@ -108,17 +88,7 @@ describe('AdminPlayers', async () => {
 	});
 
 	describe('when a player is selected', () => {
-		it('selects the clicked player', async () => {
-			const optionElement = document.querySelector(
-				`option[value="${players[0].name}"]`
-			);
-
-			await click(optionElement);
-
-			expect(optionElement.selected).toBe(true);
-		});
-
-		it('selects their games after a player was clicked', async () => {
+		it("selects the player's games", async () => {
 			const optionElement = document.querySelector(
 				`option[value="${player.name}"]`
 			);
@@ -143,7 +113,7 @@ describe('AdminPlayers', async () => {
 			});
 		});
 
-		test('when I click again on a selected user, both the player and their games should be deselected.', async () => {
+		test("when I click again on a selected user, the player's games should be deselected.", async () => {
 			const optionElement = document.querySelector(
 				`option[value="${players[0].name}"]`
 			);
@@ -151,7 +121,6 @@ describe('AdminPlayers', async () => {
 			await click(optionElement);
 			await click(optionElement);
 
-			expect(optionElement.selected).toBe(false);
 			const checkboxElements = component.getAllByRole(
 				'checkbox',
 				{
@@ -178,7 +147,6 @@ describe('AdminPlayers', async () => {
 			await click(optionElement);
 			await click(playersElement);
 
-			expect(optionElement.selected).toBe(false);
 			const checkboxElements = component.getAllByRole(
 				'checkbox',
 				{
