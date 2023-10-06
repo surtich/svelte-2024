@@ -1,6 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 
+	$$restProps; // to avoid the anoying warning: "<Game> was created with unknown prop 'color'"
 	export let name = 'game';
 	export let inc = 1;
 

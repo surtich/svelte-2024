@@ -31,6 +31,26 @@ describe('Game', () => {
 		expect(pointsElement).toHaveTextContent('4');
 	});
 
+	it('ensures "levelUp" event is fired', async () => {
+		const { getByText, component } = render(
+			Game,
+			exampleGame
+		);
+
+		const mock = vi.fn(() => {});
+		component.$on('levelUp', mock);
+
+		const buttonElement = getByText('Play My Game');
+
+		await click(buttonElement);
+		await click(buttonElement);
+		await click(buttonElement);
+		await click(buttonElement);
+		await click(buttonElement);
+
+		expect(mock).toHaveBeenCalled();
+	});
+
 	it('resets the points after the player levels up', async () => {
 		const onLevelUp = vi.fn();
 

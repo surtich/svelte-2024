@@ -11,11 +11,13 @@ export const levels = [
 export const games = {
 	chess: {
 		name: 'chess',
-		inc: 1
+		inc: 1,
+		color: 'green'
 	},
 	blackYack: {
 		name: 'black yack',
-		inc: 2
+		inc: 2,
+		color: 'blue'
 	}
 };
 
