@@ -16,7 +16,7 @@ describe('App', () => {
 		vi.mock('$lib/Dashboard/Dashboard.svelte');
 		vi.mock('$lib/Admin/Admin.svelte');
 	});
-	it.only('should render the Dashboard component initially', async () => {
+	it('should render the Dashboard component initially', async () => {
 		const component = render(App);
 
 		expect(

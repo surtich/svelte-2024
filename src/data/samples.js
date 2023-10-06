@@ -11,13 +11,27 @@ export const levels = [
 export const games = {
 	chess: {
 		name: 'chess',
+		key: 'chess',
 		inc: 1,
 		color: 'green'
 	},
 	blackYack: {
 		name: 'black yack',
+		key: 'blackYack',
 		inc: 2,
 		color: 'blue'
+	},
+	monopoly: {
+		name: 'monopoly',
+		key: 'monopoly',
+		inc: 3,
+		color: '#DC143C'
+	},
+	sudoku: {
+		name: 'sudoku',
+		key: 'sudoku',
+		inc: 2,
+		color: '#FFA500'
 	}
 };
 

@@ -7,6 +7,7 @@
 	export let levels;
 	export let games;
 	export let players;
+	export let updatePlayer;
 
 	let adminMenu = ['Levels', 'Games', 'Players'];
 	let activeAdminMenu = 'Players';
@@ -22,5 +23,10 @@
 {:else if activeAdminMenu === 'Games'}
 	<AdminGames {games} />
 {:else if activeAdminMenu === 'Players'}
-	<AdminPlayers {levels} {games} {players} />
+	<AdminPlayers
+		{levels}
+		{games}
+		{players}
+		{updatePlayer}
+	/>
 {/if}
