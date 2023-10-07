@@ -1,12 +1,37 @@
 <script>
+	import { onMount } from 'svelte';
+
+	import FuncionalSet from '$utils/FunctionalSet';
 	import Select from '$lib/utils/Select.svelte';
+	import playersStore from '$stores/players';
 
 	export let games = {};
-	export let players = [];
-	export let updatePlayer = () => {};
+	let players = [];
+
+	onMount(() => {
+		return playersStore.subscribe((data) => {
+			games = data.games;
+			players = data.players;
+		});
+	});
+
+	$: gameNames = Object.keys(games);
+
+	function updatePlayer(playerName, selectedGames) {
+		playersStore.update((data) => {
+			const player = data.players.find(
+				(player) => player.name === playerName
+			);
+			if (player) {
+				player.games = selectedGames.map(
+					(gameName) => data.games[gameName]
+				);
+			}
+			return data;
+		});
+	}
 
 	let selectedPlayer = undefined;
-	const gameNames = Object.keys(games);
 	let selectedGames = [];
 	let hasChanges = false;
 
@@ -31,10 +56,10 @@
 			hasChanges = false;
 		} else {
 			const playerGames = getGames(selectedPlayer);
-			hasChanges =
-				playerGames.length !== selectedGames.length ||
-				new Set([...selectedGames, ...playerGames])
-					.size > selectedGames.length;
+			hasChanges = !FuncionalSet.sameElements(
+				selectedGames,
+				playerGames
+			);
 		}
 	}
 </script>

@@ -29,6 +29,7 @@
 			"$utils": ["src/lib/utils"],
 			"$lib/*": ["src/lib/*"],
 			"$utils/*": ["src/lib/utils/*"],
+			"$stores/*": ["src/stores/*"],
 			"$data/*": ["src/data/*"]
 		}
 	},
@@ -39,6 +40,8 @@
 	"include": [
 		"src/**/*.d.ts",
 		"src/**/*.js",
-		"src/**/*.svelte"
+		"src/**/*.svelte",
+		"src/lib/utils/FunctionalSet.ts",
+		"src/lib/utils/FunctionalSettjs"
 	]
 }

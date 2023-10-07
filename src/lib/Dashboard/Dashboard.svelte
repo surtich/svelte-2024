@@ -1,25 +1,41 @@
 <script>
+	import { onMount } from 'svelte';
+
+	import playersStore from '$stores/players';
+
 	import Player from './Player.svelte';
 	import Game from './Game.svelte';
 
-	export let levels;
-	export let players;
+	let players = [];
+
+	onMount(() => {
+		return playersStore.subscribe((data) => {
+			players = data.players;
+		});
+	});
 
 	function onLevelUp(playerName) {
 		return () => {
+			playersStore.update((data) => {
+				const player = data.players.find(
+					(player) => player.name === playerName
+				);
+				if (
+					!player ||
+					player.experience ===
+						data.levels[data.levels.length - 1]
+				) {
+					return data;
+				}
+				let level = data.levels.indexOf(
+					player.experience
+				);
+				player.experience = data.levels[level + 1];
+				return data;
+			});
 			const player = players.find(
 				(player) => player.name === playerName
 			);
-			if (
-				!player ||
-				player.experience ===
-					levels[levels.length - 1]
-			) {
-				return;
-			}
-			let level = levels.indexOf(player.experience);
-			player.experience = levels[level + 1];
-			players = players;
 		};
 	}
 </script>

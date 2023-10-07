@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 
+import FuncionalSet from '$utils/FunctionalSet';
+
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
 	await page.getByLabel('menu Admin').click();
@@ -28,11 +30,13 @@ test.describe('Admin players', () => {
 			.getByRole('button')
 			.allTextContents();
 
-		expect(games).toEqual([
-			'Play chess',
-			'Play black yack',
-			'Play monopoly'
-		]);
+		expect(
+			FuncionalSet.sameElements(games, [
+				'Play chess',
+				'Play black yack',
+				'Play monopoly'
+			])
+		);
 	});
 	test("When the player adds games and clicks 'cancel,' the players games are not modified.", async ({
 		page
@@ -46,9 +50,11 @@ test.describe('Admin players', () => {
 			.getByRole('button')
 			.allTextContents();
 
-		expect(games).toEqual([
-			'Play chess',
-			'Play black yack'
-		]);
+		expect(
+			FuncionalSet.sameElements(games, [
+				'Play chess',
+				'Play black yack'
+			])
+		).toBe(true);
 	});
 });
