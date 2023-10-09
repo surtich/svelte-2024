@@ -4,19 +4,25 @@
 </script>
 
 <ul class="clear-fix">
-	{#each menus as menu}
+	{#each menus as { title } (title)}
 		<li>
 			<a
-				aria-label="menu {menu}"
+				aria-label="menu {title}"
 				href="/"
 				on:click|preventDefault={() => {
-					active = menu;
+					active = title;
 				}}
-				class:active={active == menu}>{menu}</a
+				class:active={active == title}>{title}</a
 			>
 		</li>
 	{/each}
 </ul>
+
+{#each menus as { title, component } (title)}
+	{#if active == title}
+		<svelte:component this={component} />
+	{/if}
+{/each}
 
 <style>
 	ul {

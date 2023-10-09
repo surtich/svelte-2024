@@ -1,7 +1,7 @@
 <script>
 	export let name = 'game';
 	export let color = 'red';
-	export const key = '';
+	export let key = '';
 
 	$: title = `Play ${name}`;
 </script>

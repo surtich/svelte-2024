@@ -1,11 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/svelte';
-import Menu from './Menu.svelte';
 import { click } from '@testing-library/user-event';
+
+import Menu from './Menu.svelte';
 
 describe('Menu', () => {
 	it('renders the list of menus', async () => {
-		const menus = ['Home', 'About', 'Contact'];
+		const menus = [
+			{
+				title: 'Home',
+				component: null
+			},
+			{ title: 'About', component: null },
+			{ title: 'Contact', component: null }
+		];
 		const { getByText } = render(Menu, {
 			menus,
 			active: 'Home'
@@ -21,7 +29,10 @@ describe('Menu', () => {
 	});
 
 	it('sets the active menu when a menu is clicked', async () => {
-		const menus = ['Home', 'About'];
+		const menus = [
+			{ title: 'Home', component: null },
+			{ title: 'About', component: null }
+		];
 		const { getByText } = render(Menu, {
 			menus,
 			active: 'Home'

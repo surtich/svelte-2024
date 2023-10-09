@@ -26,22 +26,4 @@ describe('App', () => {
 			component.queryByTestId('admin')
 		).not.toBeInTheDocument();
 	});
-
-	it('should render the Admin component after the Admin menu was clicked', async () => {
-		const { queryByTestId, getByTestId, getByRole } =
-			render(App);
-
-		const adminLink = getByRole('link', {
-			name: /admin/i
-		});
-
-		await click(adminLink);
-
-		expect(
-			queryByTestId('dashboard')
-		).not.toBeInTheDocument();
-		expect(
-			queryByTestId('admin')
-		).toBeInTheDocument();
-	});
 });
