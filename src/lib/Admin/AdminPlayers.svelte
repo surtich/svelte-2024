@@ -1,34 +1,19 @@
 <script>
-	import { onMount } from 'svelte';
-
 	import FuncionalSet from '$utils/FunctionalSet';
 	import Select from '$lib/utils/Select.svelte';
 	import playersStore from '$stores/players';
 
-	export let games = {};
-	let players = [];
-
-	onMount(() => {
-		return playersStore.subscribe((data) => {
-			games = data.games;
-			players = data.players;
-		});
-	});
-
-	$: gameNames = Object.keys(games);
+	$: gameNames = Object.keys($playersStore.games);
 
 	function updatePlayer(playerName, selectedGames) {
-		playersStore.update((data) => {
-			const player = data.players.find(
-				(player) => player.name === playerName
+		const player = $playersStore.players.find(
+			(player) => player.name === playerName
+		);
+		if (player) {
+			player.games = selectedGames.map(
+				(gameName) => $playersStore.games[gameName]
 			);
-			if (player) {
-				player.games = selectedGames.map(
-					(gameName) => data.games[gameName]
-				);
-			}
-			return data;
-		});
+		}
 	}
 
 	let selectedPlayer = undefined;
@@ -41,7 +26,7 @@
 
 	function getGames(player) {
 		return player
-			? players
+			? $playersStore.players
 					.find((p) => p.name === player)
 					.games.map((g) => g.key)
 			: [];
@@ -67,7 +52,7 @@
 <Select
 	label="Players"
 	size={Math.max(10, gameNames.length + 2)}
-	values={players.map((p) => p.name)}
+	values={$playersStore.players.map((p) => p.name)}
 	bind:selectedValue={selectedPlayer}
 	disabled={hasChanges}
 	onClick={onSelectPlayer}
@@ -85,9 +70,14 @@
 					value={gameName}
 					disabled={!selectedPlayer}
 				/>
-				<span style="color:{games[gameName].color};"
-					>{gameName}</span
-				> <span>(+{games[gameName].inc})</span>
+				<span
+					style="color:{$playersStore.games[gameName]
+						.color};">{gameName}</span
+				>
+				<span
+					>(+{$playersStore.games[gameName]
+						.inc})</span
+				>
 			</label>
 			<br />
 		{/each}
