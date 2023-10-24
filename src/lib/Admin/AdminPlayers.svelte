@@ -5,17 +5,6 @@
 
 	$: gameNames = Object.keys($playersStore.games);
 
-	function updatePlayer(playerName, selectedGames) {
-		const player = $playersStore.players.find(
-			(player) => player.name === playerName
-		);
-		if (player) {
-			player.games = selectedGames.map(
-				(gameName) => $playersStore.games[gameName]
-			);
-		}
-	}
-
 	let selectedPlayer = undefined;
 	let selectedGames = [];
 	let hasChanges = false;
@@ -87,7 +76,10 @@
 	aria-label="accept games changes"
 	disabled={!hasChanges}
 	on:click={() => {
-		updatePlayer(selectedPlayer, selectedGames);
+		playersStore.updatePlayer(
+			selectedPlayer,
+			selectedGames
+		);
 		hasChanges = false;
 	}}>Accept</button
 >
