@@ -32,7 +32,7 @@ test.describe('Dashboard', () => {
 	}) => {
 		await page
 			.getByRole('button', {
-				name: 'Play black yack'
+				name: 'Play blackjack'
 			})
 			.first()
 			.click({

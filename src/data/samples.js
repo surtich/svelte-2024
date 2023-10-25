@@ -15,9 +15,9 @@ export const games = {
 		inc: 1,
 		color: 'green'
 	},
-	blackYack: {
-		name: 'black yack',
-		key: 'blackYack',
+	blackjack: {
+		name: 'blackjack',
+		key: 'blackjack',
 		inc: 2,
 		color: 'blue'
 	},
@@ -39,11 +39,11 @@ export const players = [
 	{
 		name: 'Pepe',
 		experience: 'newbie',
-		games: [games.chess, games.blackYack]
+		games: [games.chess, games.blackjack]
 	},
 	{
 		name: 'Lucas',
 		experience: 'expert',
-		games: [games.blackYack]
+		games: [games.blackjack]
 	}
 ];

@@ -33,7 +33,7 @@ test.describe('Admin players', () => {
 		expect(
 			FuncionalSet.sameElements(games, [
 				'Play chess',
-				'Play black yack',
+				'Play blackjack',
 				'Play monopoly'
 			])
 		);
@@ -53,7 +53,7 @@ test.describe('Admin players', () => {
 		expect(
 			FuncionalSet.sameElements(games, [
 				'Play chess',
-				'Play black yack'
+				'Play blackjack'
 			])
 		).toBe(true);
 	});
