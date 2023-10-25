@@ -1,6 +1,7 @@
 <script>
 	export let menus;
-	export let active;
+	export let active =
+		menus && menus.length !== 0 && menus[0].title;
 </script>
 
 <ul class="clear-fix">
@@ -18,9 +19,9 @@
 	{/each}
 </ul>
 
-{#each menus as { title, component } (title)}
+{#each menus as { title, component, props = { } } (title)}
 	{#if active == title}
-		<svelte:component this={component} />
+		<svelte:component this={component} {...props} />
 	{/if}
 {/each}
 
