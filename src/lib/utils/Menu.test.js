@@ -16,7 +16,7 @@ describe('Menu', () => {
 		];
 		const { getByText } = render(Menu, {
 			menus,
-			active: 'Home'
+			defaultActive: 'Home'
 		});
 
 		const homeElement = getByText('Home');
@@ -35,7 +35,7 @@ describe('Menu', () => {
 		];
 		const { getByText } = render(Menu, {
 			menus,
-			active: 'Home'
+			defaultActive: 'Home'
 		});
 
 		const homeElement = getByText('Home');

@@ -13,6 +13,7 @@
 </script>
 
 <Menu
-	bind:active={activeAdminMenu}
+	key="AdminMenu"
+	bind:defaultActive={activeAdminMenu}
 	menus={adminMenu}
 />

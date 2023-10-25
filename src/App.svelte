@@ -9,4 +9,8 @@
 	let activeMainMenu = 'Dashboard';
 </script>
 
-<Menu bind:active={activeMainMenu} menus={mainMenu} />
+<Menu
+	key="AppMenu"
+	bind:defaultActive={activeMainMenu}
+	menus={mainMenu}
+/>

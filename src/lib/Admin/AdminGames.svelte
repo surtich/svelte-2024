@@ -1,5 +1,4 @@
 <script>
-	import { games } from '$data/samples';
 	import Menu from '$lib/utils/Menu.svelte';
 	import playersStore from '$stores/players';
 	import Game from './Game.svelte';
@@ -16,4 +15,4 @@
 	}));
 </script>
 
-<Menu menus={gameMenu} />
+<Menu key="GamesMenu" menus={gameMenu} />

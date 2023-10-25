@@ -1,7 +1,16 @@
 <script>
+	import { onMount } from 'svelte';
+	import menuStore from '$stores/menus';
+
+	export let key = 'key';
 	export let menus;
-	export let active =
+	export let defaultActive =
 		menus && menus.length !== 0 && menus[0].title;
+	onMount(() => {
+		if (!(key in $menuStore)) {
+			$menuStore[key] = defaultActive;
+		}
+	});
 </script>
 
 <ul class="clear-fix">
@@ -11,16 +20,17 @@
 				aria-label="menu {title}"
 				href="/"
 				on:click|preventDefault={() => {
-					active = title;
+					$menuStore[key] = title;
 				}}
-				class:active={active == title}>{title}</a
+				class:active={$menuStore[key] == title}
+				>{title}</a
 			>
 		</li>
 	{/each}
 </ul>
 
 {#each menus as { title, component, props = { } } (title)}
-	{#if active == title}
+	{#if $menuStore[key] == title}
 		<svelte:component this={component} {...props} />
 	{/if}
 {/each}
